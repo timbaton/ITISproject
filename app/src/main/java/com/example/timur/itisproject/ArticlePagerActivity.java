@@ -9,6 +9,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatActivity;
 
 import java.util.List;
 import java.util.UUID;
@@ -17,7 +18,7 @@ import java.util.UUID;
  * Created by Timur on 13.09.2017.
  */
 
-public class ArticlePagerActivity extends FragmentActivity {
+public class ArticlePagerActivity extends AppCompatActivity {
     private ViewPager mViewPager;
     private List<Article> mArticles;
     private final static String EXTRA_CRIME_ID = "article_id";
