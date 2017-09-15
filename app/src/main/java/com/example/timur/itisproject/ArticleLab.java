@@ -26,7 +26,14 @@ public class ArticleLab {
         mArticleList = new ArrayList<>();
         for (int i = 0; i < 100; i++) {
             Article article = new Article();
-            article.setText("There must be Article' text" + i);
+            article.setText("There must be Article' text. " +
+                    "\n\nTimur Kam and Nick are the best ppl in the world" +
+                    "\n\nWe hack the future" +
+                    "\nI can't show you your real text because I don't have the api(((((" +
+                    "\n" +
+                    "\nI write this text cuz I have to check the scroll view))))" +
+                    "\n" +
+                    "\nIt seems like it's work yeah man fuck you" + i);
             article.setTitle("There must be Article' title" + i);
             mArticleList.add(article);
         }

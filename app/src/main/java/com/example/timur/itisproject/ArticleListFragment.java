@@ -6,14 +6,11 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.TextView;
-import android.widget.Toast;;
+;
 
 import java.util.List;
 
@@ -75,7 +72,7 @@ public class ArticleListFragment extends Fragment {
         @Override
         public ArticleHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             LayoutInflater layoutInflater = LayoutInflater.from(getActivity());
-            View view = layoutInflater.inflate(R.layout.article_list_row, parent, false);
+            View view = layoutInflater.inflate(R.layout.row, parent, false);
             return new ArticleHolder(view);
         }
 
