@@ -10,9 +10,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 ;
 
+import com.example.timur.api.App;
+import com.example.timur.api.Pojo;
+
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * Created by Timur on 13.09.2017.
@@ -21,6 +29,8 @@ import java.util.List;
 public class ArticleListFragment extends Fragment {
     private RecyclerView mRecyclerView;
     private ArticleAdapter mArticleAdapter;
+    ArticleLab articleLab = ArticleLab.get(getActivity());
+    List<Article> articles = articleLab.getArticles();
 
     @Nullable
     @Override
@@ -29,12 +39,34 @@ public class ArticleListFragment extends Fragment {
         mRecyclerView = (RecyclerView) view.findViewById(R.id.recycler_view_article_list);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         updateUI();
+
+
+        App.getApi().getData().enqueue(new Callback<List<Pojo>>() {
+            @Override
+            public void onResponse(Call<List<Pojo>> call, Response<List<Pojo>> response) {
+
+                for (int i = 0; i < response.body().size(); i++) {
+                    Article article = new Article();
+                    article.setTitle(response.body().get(i).getTitle());
+                    article.setText(response.body().get(i).getText());
+                    articleLab.addArticle(article);
+                }
+
+                mRecyclerView.getAdapter().notifyDataSetChanged();
+            }
+
+            @Override
+            public void onFailure(Call<List<Pojo>> call, Throwable t) {
+                Toast.makeText(getActivity(), "An error occurred during networking", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
         return view;
     }
 
     private void updateUI() {
-        ArticleLab articleLab = ArticleLab.get(getActivity());
-        List<Article> articles = articleLab.getArticles();
+
         mArticleAdapter = new ArticleAdapter(articles);
         mRecyclerView.setAdapter(mArticleAdapter);
     }
