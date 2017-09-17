@@ -44,5 +44,9 @@ public class ArticleLab {
         return null;
     }
 
+    public void clear(){
+        mArticleList.clear();
+    }
+
 
 }

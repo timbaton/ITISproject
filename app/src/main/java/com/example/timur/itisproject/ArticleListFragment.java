@@ -65,8 +65,10 @@ public class ArticleListFragment extends Fragment {
         return view;
     }
 
-    private void updateUI() {
 
+
+    private void updateUI() {
+        articleLab.clear();
         mArticleAdapter = new ArticleAdapter(articles);
         mRecyclerView.setAdapter(mArticleAdapter);
     }
