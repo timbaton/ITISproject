@@ -10,12 +10,14 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 ;
 
 import com.example.timur.api.App;
 import com.example.timur.api.Pojo;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -77,12 +79,14 @@ public class ArticleListFragment extends Fragment {
 
     class ArticleHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         TextView mTitleTextView;
+        ImageView mImageView;
         Article mArticle;
 
         ArticleHolder(View itemView) {
             super(itemView);
             itemView.setOnClickListener(this);
             mTitleTextView = (TextView) itemView.findViewById(R.id.article_title);
+            mImageView = (ImageView) itemView.findViewById(R.id.action_image);
         }
 
         @Override
@@ -94,6 +98,7 @@ public class ArticleListFragment extends Fragment {
         public void bindArticle(Article article) {
             mArticle = article;
             mTitleTextView.setText(mArticle.getTitle());
+            Picasso.with(getActivity()).load(mArticle.getImage()).fit().into(mImageView);
         }
     }
 
