@@ -2,6 +2,7 @@ package com.example.timur.itisproject;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -43,12 +44,13 @@ public class ArticleListFragment extends Fragment {
 
         App.getApi().getData().enqueue(new Callback<List<Pojo>>() {
             @Override
-            public void onResponse(Call<List<Pojo>> call, Response<List<Pojo>> response) {
+            public void onResponse(@NonNull Call<List<Pojo>> call, @NonNull Response<List<Pojo>> response) {
 
                 for (int i = 0; i < response.body().size(); i++) {
                     Article article = new Article();
                     article.setTitle(response.body().get(i).getTitle());
                     article.setText(response.body().get(i).getText());
+                    article.setImage(response.body().get(i).getImg());
                     articleLab.addArticle(article);
                 }
 

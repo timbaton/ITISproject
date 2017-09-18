@@ -41,6 +41,16 @@ public class Article {
     private String text;
     private Date mDate;
 
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    private String image;
+
     public String getTitle() {
         return title;
     }

@@ -4,5 +4,7 @@
     android:id="@+id/recycler_view_article_list"
     android:name="com.example.timur.itisproject.articleFragment"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
+
+
     />

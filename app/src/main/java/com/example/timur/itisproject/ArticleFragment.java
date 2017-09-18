@@ -5,7 +5,10 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.UUID;
 
@@ -17,6 +20,8 @@ public class ArticleFragment extends Fragment{
     public static final String ARG_CRIME_ID = "crime_id";
     private Article mArticle;
     private TextView mArticleText;
+    private TextView mTitle;
+    private ImageView mImageView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -42,6 +47,15 @@ public class ArticleFragment extends Fragment{
         View v = inflater.inflate(R.layout.fragment_article, container, false);
         mArticleText = (TextView)v.findViewById(R.id.article_text);
         mArticleText.setText(mArticle.getText());
+
+//        mTitle = (TextView)v.findViewById(R.id.title);
+//        mTitle.setText(mArticle.getTitle());
+
+        mImageView = (ImageView) v.findViewById(R.id.image);
+        Picasso.with(getActivity()).load(mArticle.getImage()).fit().into(mImageView);
+
+
+
         return v;
     }
 

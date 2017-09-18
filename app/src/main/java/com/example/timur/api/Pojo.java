@@ -8,8 +8,17 @@ public class Pojo {
 
 
     private String title;
+    private String img;
     private String text;
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
+    }
 
     public String getTitle() {
         return title;
